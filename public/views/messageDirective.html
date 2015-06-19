@@ -1,0 +1,31 @@
+<div class="message-container">
+    <h3>Comments</h3>
+    <div class="input-block">
+        <div class="form-group">
+            <textarea ng-model="Message.text" ng-keypress="handleKey($event)"></textarea>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="Message.enterToSubmit"> Enter key to submit
+            </label>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary pull-right" ng-click="Message.add()">Save</button>
+        </div>
+    </div>
+    <div class="message-block">
+        <ul ng-if="Message.dataList.length">
+            <li ng-repeat="item in Message.dataList" class="row">
+                <div class="avatar"><img src="message/assets/img/avatar_male.png" height="20" width="20"></div>
+                <div class="text col-sm-11">
+                    <span class="label label-danger" ng-if="!item.isAuthorised">Pending Approval</span>
+                    <h6>{{item.user.name}} :</h6>
+                    <p ng-bind="item.content"></p>
+                </div>
+            </li>
+        </ul>
+        <p ng-if="!Message.dataList.length" class="fluid-container text-center empty-list">
+            Don't wait someone to start, be the first and make yourself proud.
+        </p>
+    </div>
+</div>

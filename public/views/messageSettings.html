@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Approve Message</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered" ng-if="messages.length">
+            <thead>
+                <tr>
+                    <th class="col-sm-1">Sl</th>
+                    <th class="col-sm-7">Text</th>
+                    <th class="col-sm-2">Owner</th>
+                    <th class="col-sm-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="message in messages">
+                    <td>{{$index +1}}</td>
+                    <td>{{message.content}}</td>
+                    <td>{{message.user.name}}</td>
+                    <td class="text-center">
+                        <button ng-click="Message.approveMessage(message._id)" class="btn" ng-class="{'btn-success':message.isAuthorised,'btn-danger':!message.isAuthorised}" title="{{message.isAuthorised?'Approved':'Click to approve'}}">
+                            <i class="glyphicon" ng-class="{'glyphicon-thumbs-up':message.isAuthorised,'glyphicon-thumbs-down':!message.isAuthorised}"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="!messages.length" class="fluid-container text-center empty-list">
+            <p>No message to list</p>
+        </div>
+    </div>
+</div>
