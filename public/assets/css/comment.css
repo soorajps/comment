@@ -1,4 +1,4 @@
-.message-container {
+.comment-container {
     background: #e5e5e5;
     border-radius: 5px;
     border: 5px solid #F1F1F1;
@@ -21,7 +21,7 @@
     border-radius: 5px;
 }
 
-.message-block {
+.comment-block {
     background: #e5e5e5;
     margin: 10px 0;
     border: 1px solid gray;
@@ -29,20 +29,20 @@
     padding: 0;
 }
 
-.message-block ul {
+.comment-block ul {
     margin: 0;
     list-style: none;
     padding: 20px;
 }
 
-.message-block li {
+.comment-block li {
     border: 1px solid gray;
     margin: 10px 0;
     border-radius: 5px;
     padding: 10px;
 }
 
-.message-block .avatar {
+.comment-block .avatar {
     padding: 10px;
     border: 1px solid beige;
     display: block;
@@ -52,7 +52,7 @@
     border-radius: 5px;
 }
 
-.message-block .text {
+.comment-block .text {
     padding: 3px;
     min-height: 50px;
     display: inline-block;
@@ -62,7 +62,7 @@
     min-width: 28%;
 }
 
-.message-block .text h6 {
+.comment-block .text h6 {
     font-size: 13px;
     padding: 0px 5px 0;
     font-weight: bold;
@@ -70,7 +70,7 @@
     margin: 5px 0;
 }
 
-.message-block .text p {
+.comment-block .text p {
     font-size: 12px;
     padding: 5px 10px;
 }

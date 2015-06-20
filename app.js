@@ -6,21 +6,21 @@
 'use strict';
 
 var Module = require('meanio').Module;
-var Message = new Module('message');
+var Comment = new Module('comment');
 
 
-Message.register(function(app, auth, database) {
+Comment.register(function(app, auth, database) {
 
-    Message.routes(app, auth, database);
-    Message.aggregateAsset('css', 'message.css');
-    Message.angularDependencies(['mean.system']);
+    Comment.routes(app, auth, database);
+    Comment.aggregateAsset('css', 'comment.css');
+    Comment.angularDependencies(['mean.system']);
 
-    Message.menus.add({
+    Comment.menus.add({
     	'roles':['admin'],
     	'title':'Message settings',
-    	'link':'message settings',
+    	'link':'comment settings',
     	'menu':'main'
     });
 
-    return Message;
+    return Comment;
 });

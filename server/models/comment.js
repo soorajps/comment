@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 
 
 /**
- * [MessageSchema]
+ * [CommentSchema]
  * @type {Schema}
  */
-var MessageSchema = new Schema({
+var CommentSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -41,16 +41,16 @@ var MessageSchema = new Schema({
 });
 
 
-MessageSchema.path('content').validate(function(content) {
+CommentSchema.path('content').validate(function(content) {
     return content.length;
-}, 'Please enter a valid message.');
+}, 'Please enter a valid comment.');
 
 
-MessageSchema.statics.load = function(id, cb) {
+CommentSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).populate('user', 'name username').exec(cb);
 };
 
 
-mongoose.model('Message', MessageSchema);
+mongoose.model('Comment', CommentSchema);

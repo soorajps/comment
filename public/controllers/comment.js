@@ -6,11 +6,11 @@
 
 'use strict';
 
-angular.module('mean.message').controller('MessageController', ['$scope', '$rootScope', 'Global', 'Message', 'Menus',
+angular.module('mean.comment').controller('CommentController', ['$scope', '$rootScope', 'Global', 'Comment', 'Menus',
 
-    function($scope, $rootScope, Global, Message, Menus) {
+    function($scope, $rootScope, Global, Comment, Menus) {
         $scope.global = Global;
-        $scope.Message = {
+        $scope.Comment = {
 
             /**
              * @description Init controller
@@ -21,17 +21,17 @@ angular.module('mean.message').controller('MessageController', ['$scope', '$root
             },
 
             /**
-             * @description Add message
+             * @description Add comment
              * @return {null}
              */
             add: function() {
-                var message = new Message({
-                    content: $scope.Message.text
+                var comment = new Comment({
+                    content: $scope.Comment.text
                 });
 
-                message.$save(function(res) {
-                    $scope.Message.text = '';
-                    $scope.Message.query();
+                comment.$save(function(res) {
+                    $scope.Comment.text = '';
+                    $scope.Comment.query();
                 });
             },
 
@@ -41,12 +41,12 @@ angular.module('mean.message').controller('MessageController', ['$scope', '$root
              * @return {null}
              */
             query: function() {
-                Message.query(function(res) {
-                    $scope.Message.dataList = res;
+                Comment.query(function(res) {
+                    $scope.Comment.dataList = res;
                 });
             }
         }
 
-        $scope.Message.init();
+        $scope.Comment.init();
     }
 ]);

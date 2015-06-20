@@ -1,67 +1,67 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var Message = mongoose.model('Message');
+var Comment = mongoose.model('Comment');
 var _ = require('lodash');
 var ObjectId = mongoose.Types.ObjectId;
 
 
-module.exports = function(Messages) {
+module.exports = function(Comments) {
 
     return {
         /**
-         * @description Get message by id
+         * @description Get comment by id
          * @param  {[object]} req
          * @param  {[object]} res
          * @param  {Function} next
          * @param  {[string]} id
          * @return {[object]}
          */
-        message: function(req, res, next, id) {
-            Message.load(id, function(err, message) {
+        comment: function(req, res, next, id) {
+            Comment.load(id, function(err, comment) {
                 if (err) return next(err);
-                if (!message) return next(new Error('Failed to load message'));
-                req.message = message;
+                if (!comment) return next(new Error('Failed to load comment'));
+                req.comment = comment;
                 next();
             });
         },
 
         /**
-         * @description Add message
+         * @description Add comment
          * @param {[object]} req
          * @param {[object]} res
          */
         add: function(req, res) {
-            var message = new Message(req.body);
-            message.user = req.user;
-            message.save(function(err) {
+            var comment = new Comment(req.body);
+            comment.user = req.user;
+            comment.save(function(err) {
                 if (err) {
                     return res.status(500).json({
                         error: 'Cannot save the article'
                     });
                 }
-                res.json(message);
+                res.json(comment);
             });
         },
 
         /**
-         * @description Update message
+         * @description Update comment
          * @param  {object} req
          * @param  {object} res
          * @return {object}
          */
         update: function(req, res) {
-            var message = req.message;
-            message = _.extend(message, req.body, {
-                isAuthorised: !message.isAuthorised
+            var comment = req.comment;
+            comment = _.extend(comment, req.body, {
+                isAuthorised: !comment.isAuthorised
             });
-            message.save(function(err) {
+            comment.save(function(err) {
                 if (err) {
                     return res.status(500).json({
                         error: 'Update failed'
                     });
                 };
-                res.json(message);
+                res.json(comment);
             });
         },
 
@@ -72,7 +72,7 @@ module.exports = function(Messages) {
          * @return {object}
          */
         all: function(req, res) {
-            Message.find().sort('-created').populate('user', 'name username').exec(function(err, messages) {
+            Comment.find().sort('-created').populate('user', 'name username').exec(function(err, messages) {
                 if (err) {
                     return res.status(500).json({
                         error: 'Cannot list the messages'
@@ -90,7 +90,7 @@ module.exports = function(Messages) {
          * @return {object}
          */
         list: function(req, res) {
-            Message.find({
+            Comment.find({
                 $or: [{
                     isAuthorised: true
                 }, {

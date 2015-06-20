@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Approve Comment</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered" ng-if="comments.length">
+            <thead>
+                <tr>
+                    <th class="col-sm-1">Sl</th>
+                    <th class="col-sm-7">Text</th>
+                    <th class="col-sm-2">Owner</th>
+                    <th class="col-sm-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="comment in comments">
+                    <td>{{$index +1}}</td>
+                    <td>{{comment.content}}</td>
+                    <td>{{comment.user.name}}</td>
+                    <td class="text-center">
+                        <button ng-click="Comment.approveComment(comment._id)" class="btn" ng-class="{'btn-success':comment.isAuthorised,'btn-danger':!comment.isAuthorised}" title="{{comment.isAuthorised?'Approved':'Click to approve'}}">
+                            <i class="glyphicon" ng-class="{'glyphicon-thumbs-up':comment.isAuthorised,'glyphicon-thumbs-down':!comment.isAuthorised}"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="!comments.length" class="fluid-container text-center empty-list">
+            <p>No comment to list</p>
+        </div>
+    </div>
+</div>

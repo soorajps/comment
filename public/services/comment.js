@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('mean.message').factory('Message', ['$resource',
+angular.module('mean.comment').factory('Comment', ['$resource',
     function($resource) {
-        return $resource('api/message/:messageId/', {
-            messageId: '@_id'
+        return $resource('api/comment/:commentId/', {
+            commentId: '@_id'
         }, {
             update: {
                 method: 'PUT'
             },
             all: {
-                url: 'api/messages/',
+                url: 'api/comments/',
                 method: 'GET',
                 isArray: true
             }

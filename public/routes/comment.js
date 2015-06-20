@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 'use strict';
-angular.module('mean.message').config(['$stateProvider',
+angular.module('mean.comment').config(['$stateProvider',
     function($stateProvider) {
-        $stateProvider.state('message settings', {
-            url: '/message/settings',
-            templateUrl: 'message/views/messageSettings.html',
-            controller:'MessageSettingsCtrl',
+        $stateProvider.state('comment settings', {
+            url: '/comment/settings',
+            templateUrl: 'comment/views/commentSettings.html',
+            controller:'CommentSettingsCtrl',
             resolve: {
                 isAdmin: function(MeanUser) {
                     return MeanUser.checkAdmin();

@@ -1,22 +1,22 @@
-<div class="message-container">
+<div class="comment-container">
     <h3>Comments</h3>
     <div class="input-block">
         <div class="form-group">
-            <textarea ng-model="Message.text" ng-keypress="handleKey($event)"></textarea>
+            <textarea ng-model="Comment.text" ng-keypress="handleKey($event)"></textarea>
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" ng-model="Message.enterToSubmit"> Enter key to submit
+                <input type="checkbox" ng-model="Comment.enterToSubmit"> Enter key to submit
             </label>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary pull-right" ng-click="Message.add()">Save</button>
+            <button class="btn btn-primary pull-right" ng-click="Comment.add()">Save</button>
         </div>
     </div>
-    <div class="message-block">
-        <ul ng-if="Message.dataList.length">
-            <li ng-repeat="item in Message.dataList" class="row">
-                <div class="avatar"><img src="message/assets/img/avatar_male.png" height="20" width="20"></div>
+    <div class="comment-block">
+        <ul ng-if="Comment.dataList.length">
+            <li ng-repeat="item in Comment.dataList" class="row">
+                <div class="avatar"><img src="comment/assets/img/avatar_male.png" height="20" width="20"></div>
                 <div class="text col-sm-11">
                     <span class="label label-danger" ng-if="!item.isAuthorised">Pending Approval</span>
                     <h6>{{item.user.name}} :</h6>
@@ -24,7 +24,7 @@
                 </div>
             </li>
         </ul>
-        <p ng-if="!Message.dataList.length" class="fluid-container text-center empty-list">
+        <p ng-if="!Comment.dataList.length" class="fluid-container text-center empty-list">
             Don't wait someone to start, be the first and make yourself proud.
         </p>
     </div>
